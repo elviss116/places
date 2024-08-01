@@ -9,7 +9,7 @@ import javax.inject.Inject
 
 class GetPlacesUseCase @Inject constructor(
     private val repository: PlacesRepository
-) : BaseUseCase<MainEntity<PlaceEntity>,Any>() {
-    override suspend fun run(params: Any): Either<Failure, MainEntity<PlaceEntity>> =
+) : BaseUseCase<MainEntity<List<PlaceEntity>>,Any>() {
+    override suspend fun run(params: Any): Either<Failure, MainEntity<List<PlaceEntity>>> =
         repository.getPlaces()
 }

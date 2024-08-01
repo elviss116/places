@@ -10,16 +10,15 @@ import retrofit2.Retrofit
 import javax.inject.Inject
 
 interface IPlacesEndPoint {
-    suspend fun getPlaces() : Either<Failure,MainResponse<PlacesResponse>>
+    suspend fun getPlaces() : Either<Failure,MainResponse<List<PlacesResponse>>>
 
     class IPlacesEndPointImpl @Inject constructor(
         private val retrofit: Retrofit,
         private val networkHandler: NetworkHandler
     ): IPlacesEndPoint {
         private val api by lazy { retrofit.create(GetPlaces::class.java) }
-        override suspend fun getPlaces(): Either<Failure, MainResponse<PlacesResponse>> = networkHandler.callService {
+        override suspend fun getPlaces(): Either<Failure, MainResponse<List<PlacesResponse>>> = networkHandler.callService {
             api.getPlaces()
         }
-
     }
 }

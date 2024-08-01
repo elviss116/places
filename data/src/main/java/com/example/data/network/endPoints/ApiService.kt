@@ -7,5 +7,5 @@ import retrofit2.http.GET
 
 interface GetPlaces {
     @GET("api-place/listPlaces.php")
-    suspend fun getPlaces(): Response<MainResponse<PlacesResponse>>
+    suspend fun getPlaces(): Response<MainResponse<List<PlacesResponse>>>
 }
