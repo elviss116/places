@@ -13,7 +13,7 @@ class PlacesRepositoryImpl @Inject constructor(
     private val source: IPlacesEndPoint,
     private val mapper: PlacesMapper
 ) : PlacesRepository {
-    override suspend fun getPlaces(): Either<Failure, MainEntity<PlaceEntity>> {
+    override suspend fun getPlaces(): Either<Failure, MainEntity<List<PlaceEntity>>> {
         return when(val response = source.getPlaces()){
             is Either.Left -> Either.Left(response.a)
             is Either.Right -> Either.Right(mapper.placesDataToDomain(response.b))

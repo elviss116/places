@@ -6,10 +6,11 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <com.google.android.material.card.MaterialCardView
-        android:layout_width="220dp"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
-        app:cardElevation="0dp"
+        app:cardElevation="5dp"
         app:cardCornerRadius="20dp"
+        android:layout_margin="5dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -23,7 +24,7 @@
                 android:id="@+id/materialCardView"
                 android:layout_width="match_parent"
                 android:layout_height="190dp"
-                android:layout_margin="15dp"
+                android:layout_margin="10dp"
                 app:cardCornerRadius="10dp"
                 app:cardElevation="0dp"
                 app:layout_constraintEnd_toEndOf="parent"
