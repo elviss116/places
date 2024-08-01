@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="Theme">
+        <attr name="colorOnPrimaryB" format="color"/>
+        <attr name="colorOnPrimaryFragment" format="color"/>
+        <attr name="colorOnPrimaryLight" format="color"/>
+        <attr name="myTextColor" format="color"/>
+    </declare-styleable>
+</resources>

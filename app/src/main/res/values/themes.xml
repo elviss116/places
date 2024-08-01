@@ -1,0 +1,27 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.Places" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Customize your light theme here. -->
+        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+
+        <item name="colorPrimary">@color/c_primary</item>
+        <item name="colorPrimaryVariant">@color/c_purple</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/black</item>
+        <item name="colorSecondaryVariant">@color/c_purple</item>
+
+        <item name="colorOnSecondary">@color/black</item>
+
+
+        <!-- CUSTOM COLORS -->
+        <item name="colorOnPrimaryB">@color/c_secondary_dark</item>
+        <item name="colorOnPrimaryLight">@color/c_primary_light</item>
+        <item name="colorOnPrimaryFragment">@color/white</item>
+        <item name="myTextColor">@color/black</item>
+
+
+    </style>
+
+    <style name="Theme.Places" parent="Base.Theme.Places" />
+</resources>
