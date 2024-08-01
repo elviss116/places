@@ -1,6 +1,7 @@
 package com.example.data.di
 
-import com.example.data.source.IPlacesEndPoint
+import com.example.data.network.source.IPlaceDetailEndPoint
+import com.example.data.network.source.IPlacesEndPoint
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -14,4 +15,9 @@ abstract class EndPointsModule {
     abstract fun bindEndPointPlaces(
         endPoint: IPlacesEndPoint.IPlacesEndPointImpl
     ) : IPlacesEndPoint
+
+    @Binds
+    abstract fun bindEndPointPlaceDetail(
+        endPoint: IPlaceDetailEndPoint.IPlaceDetailEndPointImpl
+    ) : IPlaceDetailEndPoint
 }

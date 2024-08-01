@@ -1,9 +1,8 @@
 package com.example.data.di
 
-import com.example.data.network.mapper.PlacesMapper
-import com.example.data.network.mapper.PlacesMapperImpl
+import com.example.data.repository.PlaceDetailRepositoryImpl
 import com.example.data.repository.PlacesRepositoryImpl
-import com.example.data.source.IPlacesEndPoint
+import com.example.domain.repository.PlaceDetailRepository
 import com.example.domain.repository.PlacesRepository
 import dagger.Binds
 import dagger.Module
@@ -18,4 +17,9 @@ abstract class RepositoryModule {
     abstract fun bindRepositoryPlaces(
         repositoryImpl: PlacesRepositoryImpl
     ) : PlacesRepository
+
+    @Binds
+    abstract fun bindRepositoryPlaceDetail(
+        repositoryImpl: PlaceDetailRepositoryImpl
+    ) : PlaceDetailRepository
 }

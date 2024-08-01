@@ -1,9 +1,9 @@
-package com.example.data.network.mapper
+package com.example.data.network.mapper.place
 
 import com.example.data.entity.MainResponse
 import com.example.data.entity.places.PlacesResponse
 import com.example.domain.entity.MainEntity
-import com.example.domain.entity.movie.PlaceEntity
+import com.example.domain.entity.place.PlaceEntity
 import javax.inject.Inject
 
 class PlacesMapperImpl @Inject constructor() : PlacesMapper {

@@ -1,4 +1,4 @@
-package com.example.data.source
+package com.example.data.network.source
 
 import com.example.data.entity.MainResponse
 import com.example.data.entity.places.PlacesResponse

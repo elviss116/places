@@ -1,11 +1,11 @@
 package com.example.data.repository
 
-import com.example.data.network.mapper.PlacesMapper
-import com.example.data.source.IPlacesEndPoint
+import com.example.data.network.mapper.place.PlacesMapper
+import com.example.data.network.source.IPlacesEndPoint
 import com.example.domain.entity.Either
 import com.example.domain.entity.Failure
 import com.example.domain.entity.MainEntity
-import com.example.domain.entity.movie.PlaceEntity
+import com.example.domain.entity.place.PlaceEntity
 import com.example.domain.repository.PlacesRepository
 import javax.inject.Inject
 

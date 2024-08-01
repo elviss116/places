@@ -3,7 +3,7 @@ package com.example.domain.useCase
 import com.example.domain.entity.Either
 import com.example.domain.entity.Failure
 import com.example.domain.entity.MainEntity
-import com.example.domain.entity.movie.PlaceEntity
+import com.example.domain.entity.place.PlaceEntity
 import com.example.domain.repository.PlacesRepository
 import javax.inject.Inject
 

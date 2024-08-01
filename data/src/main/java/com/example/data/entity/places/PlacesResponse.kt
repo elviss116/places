@@ -1,6 +1,6 @@
 package com.example.data.entity.places
 
-import com.example.domain.entity.movie.PlaceEntity
+import com.example.domain.entity.place.PlaceEntity
 import com.google.gson.annotations.SerializedName
 
 data class PlacesResponse(

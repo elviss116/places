@@ -1,8 +1,9 @@
 package com.example.data.di
 
-import com.example.data.network.mapper.PlacesMapper
-import com.example.data.network.mapper.PlacesMapperImpl
-import com.example.data.source.IPlacesEndPoint
+import com.example.data.network.mapper.place.PlacesMapper
+import com.example.data.network.mapper.place.PlacesMapperImpl
+import com.example.data.network.mapper.placeDetail.PlaceDetailMapper
+import com.example.data.network.mapper.placeDetail.PlaceDetailMapperImpl
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -16,4 +17,9 @@ abstract class MapperModule {
     abstract fun bindMapperPlaces(
         mapperImpl: PlacesMapperImpl
     ) : PlacesMapper
+
+    @Binds
+    abstract fun bindMapperPlaceDetail(
+        mapperImpl: PlaceDetailMapperImpl
+    ) : PlaceDetailMapper
 }

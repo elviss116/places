@@ -2,7 +2,7 @@ package com.example.places.feature.ui.place
 
 import androidx.lifecycle.viewModelScope
 import com.example.domain.entity.MainEntity
-import com.example.domain.entity.movie.PlaceEntity
+import com.example.domain.entity.place.PlaceEntity
 import com.example.domain.useCase.GetPlacesUseCase
 import com.example.places.feature.base.BaseViewModel
 import com.example.places.mapper.places.PlacesModelMapper
