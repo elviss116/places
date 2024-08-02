@@ -21,4 +21,7 @@ interface DaoPlace {
 
     @Query("select count(*) from place where id=:id")
     suspend fun getPlaceById(id: String) : Int
+
+    @Query("select count(*) from place where id=:id")
+    fun getPlaceByIdFlow(id: String) : Flow<Int>
 }

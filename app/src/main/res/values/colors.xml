@@ -23,6 +23,7 @@
     <color name="c_green">#5EB034</color>
     <color name="c_orangeDark">#FD5F1A</color>
     <color name="c_orangeLight">#F3B6AC</color>
+    <color name="c_red">#E91E63</color>
 
 
 </resources>

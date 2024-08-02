@@ -2,6 +2,8 @@ package com.example.places.feature.ui.placeDetail
 
 import android.os.Bundle
 import android.view.View
+import androidx.core.content.ContextCompat
+import androidx.core.graphics.drawable.DrawableCompat
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
@@ -12,6 +14,7 @@ import com.example.places.databinding.FragmentPlaceDetailBinding
 import com.example.places.feature.base.BaseFragment
 import com.example.places.feature.ui.placeMap.PlaceMapFragment
 import com.example.places.feature.utils.parcelable
+import com.example.places.feature.utils.themeColor
 import com.example.places.model.PlaceDetailModelView
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
@@ -37,7 +40,9 @@ class PlaceDetailFragment : BaseFragment<FragmentPlaceDetailBinding,PlaceDetailV
             viewLifecycleOwner.lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED){
                 myViewModel.state.collectLatest { state ->
                     when(state){
-                       is UIPlaceDetailState.OnDetailIsLoaded -> setData(state)
+                        is UIPlaceDetailState.OnDetailIsLoaded -> setData(state)
+                        is UIPlaceDetailState.OnVerifyFavorite -> setIconFavorite(state.isFavorite)
+                        is UIPlaceDetailState.OnAddOrDeleteFavorite -> showToast(state.msg)
                     }
                 }
             }
@@ -54,11 +59,27 @@ class PlaceDetailFragment : BaseFragment<FragmentPlaceDetailBinding,PlaceDetailV
                 }
                 findNavController().navigate(R.id.placeMapFragment,bundle)
             }
+            btnAddFavorite.setOnClickListener {
+                placeDetail?.let { pd ->
+                    myViewModel.executeUseCaseAddFavorite(pd)
+                }
+            }
         }
+    }
+
+    private fun setIconFavorite(isfavorite: Boolean){
+        if (isfavorite){
+            binding.btnAddFavorite.setImageResource(R.drawable.ic_favorite)
+        }else{
+            binding.btnAddFavorite.setImageResource(R.drawable.ic_favorite_no)
+        }
+        val primaryColor = requireContext().themeColor(androidx.appcompat.R.attr.colorPrimary)
+        DrawableCompat.setTint(binding.btnAddFavorite.drawable, primaryColor)
     }
 
     private fun setData(state: UIPlaceDetailState.OnDetailIsLoaded){
         placeDetail = state.detail
+        myViewModel.executeUseCaseVerifyFavoriteUseCase(state.detail.id)
         with(binding){
             Glide
                 .with(imgPlace.context)
