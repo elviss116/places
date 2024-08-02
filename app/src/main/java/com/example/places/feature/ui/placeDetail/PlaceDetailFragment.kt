@@ -5,9 +5,14 @@ import android.view.View
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
+import com.example.places.R
 import com.example.places.databinding.FragmentPlaceDetailBinding
 import com.example.places.feature.base.BaseFragment
+import com.example.places.feature.ui.placeMap.PlaceMapFragment
+import com.example.places.feature.utils.parcelable
+import com.example.places.model.PlaceDetailModelView
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
@@ -16,10 +21,10 @@ import kotlinx.coroutines.launch
 class PlaceDetailFragment : BaseFragment<FragmentPlaceDetailBinding,PlaceDetailViewModel>(FragmentPlaceDetailBinding::inflate) {
 
     private val idPlaceBundle by lazy { arguments?.getString(KEY_ID_PLACE) }
+    private var placeDetail : PlaceDetailModelView? = null
 
     override val classTypeOfVM: Class<PlaceDetailViewModel>
         get() = PlaceDetailViewModel::class.java
-
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -38,9 +43,22 @@ class PlaceDetailFragment : BaseFragment<FragmentPlaceDetailBinding,PlaceDetailV
             }
         }
 
+        configView()
+    }
+
+    private fun configView(){
+        with(binding){
+            btnGoToMap.setOnClickListener {
+                val bundle = Bundle().apply {
+                    putParcelable(PlaceMapFragment.KEY_PLACE_DETAIL_BUNDLE,placeDetail)
+                }
+                findNavController().navigate(R.id.placeMapFragment,bundle)
+            }
+        }
     }
 
     private fun setData(state: UIPlaceDetailState.OnDetailIsLoaded){
+        placeDetail = state.detail
         with(binding){
             Glide
                 .with(imgPlace.context)

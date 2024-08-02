@@ -23,5 +23,14 @@
         android:id="@+id/placeDetailFragment"
         android:name="com.example.places.feature.ui.placeDetail.PlaceDetailFragment"
         android:label="fragment_place_detail"
-        tools:layout="@layout/fragment_place_detail" />
+        tools:layout="@layout/fragment_place_detail" >
+        <action
+            android:id="@+id/action_placeDetailFragment_to_placeMapFragment"
+            app:destination="@id/placeMapFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/placeMapFragment"
+        android:name="com.example.places.feature.ui.placeMap.PlaceMapFragment"
+        android:label="fragment_place_map"
+        tools:layout="@layout/fragment_place_map" />
 </navigation>

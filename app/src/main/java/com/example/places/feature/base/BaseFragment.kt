@@ -71,13 +71,15 @@ abstract class BaseFragment<VB: ViewBinding, ViewModelType: BaseViewModel>(priva
                         LoadingDialog.TAG
                     )//childFragmentManager
                 // requireActivity().supportFragmentManager.executePendingTransactions()
-                } else {
-
                 }
             }
 
         } else {
-            myDialog?.dismiss()
+            myDialog?.let {
+                if (it.isAdded){
+                    it.dismiss()
+                }
+            }
             //requireActivity().supportFragmentManager.executePendingTransactions()
         }
     }
