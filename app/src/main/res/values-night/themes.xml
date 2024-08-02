@@ -3,5 +3,67 @@
     <style name="Base.Theme.Places" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your dark theme here. -->
         <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
+
+        <item name="colorPrimary">@color/c_primary_dark</item>
+        <item name="colorPrimaryVariant">@color/c_red</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/black</item>
+        <item name="colorSecondaryVariant">@color/c_red</item>
+
+        <item name="colorOnSecondary">@color/black</item>
+
+        <!-- CUSTOM COLORS -->
+        <item name="colorOnPrimaryB">@color/dt_black</item>
+        <item name="colorOnPrimaryLight">@color/dt_black_light</item>
+        <item name="colorOnPrimaryFragment">@color/white</item>
+        <item name="myTextColor">@color/white</item>
+        <item name="myTextColorLight">@color/colorGrey</item>
+
     </style>
+
+    <style name="Widget.MaterialComponents.Button.IconOnly" >
+        <item name="iconPadding">0dp</item>
+        <item name="android:insetTop">0dp</item>
+        <item name="android:insetBottom">0dp</item>
+        <item name="android:paddingLeft">12dp</item>
+        <item name="android:paddingRight">12dp</item>
+        <item name="android:minWidth">12dp</item>
+        <item name="android:minHeight">12dp</item>
+        <item name="iconGravity">textStart</item>
+        <item name="iconTint">@color/white</item>
+    </style>
+
+    <style name="ShapeAppearanceOverlay.MyApp.Button.Circle" parent="Widget.MaterialComponents.Button">
+        <item name="android:stateListAnimator">@null</item>
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">50%</item>
+    </style>
+
+    <style name="myTitleStyle" parent="TextAppearance.AppCompat">
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">?attr/myTextColor</item>
+        <item name="fontFamily">@font/montserrat_black</item>
+    </style>
+
+    <style name="mySubTitleStyle" parent="TextAppearance.AppCompat">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">?attr/myTextColor</item>
+        <item name="fontFamily">@font/montserrat_bold</item>
+    </style>
+
+    <style name="myTvTitleStyle" parent="TextAppearance.AppCompat">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">?attr/myTextColor</item>
+        <item name="fontFamily">@font/montserrat_bold</item>
+    </style>
+
+    <style name="myTvDescriptionStyle" parent="TextAppearance.AppCompat">
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">?attr/myTextColorLight</item>
+        <item name="fontFamily">@font/montserrat_regular</item>
+    </style>
+
+
+
 </resources>

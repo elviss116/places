@@ -10,6 +10,7 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.request.target.CustomTarget
 import com.bumptech.glide.request.transition.Transition
 import com.example.places.databinding.LayoutInfoWindowBinding
+import com.example.places.feature.utils.loadImageUrl
 import com.example.places.model.PlaceDetailModelView
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.model.Marker

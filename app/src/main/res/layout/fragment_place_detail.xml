@@ -42,10 +42,10 @@
 
             <TextView
                 android:id="@+id/tvTitle"
+                style="@style/myTitleStyle"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="20dp"
-                android:textSize="20sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/viewInf"
@@ -62,6 +62,7 @@
 
             <TextView
                 android:id="@+id/tvAddress"
+                style="@style/myTvDescriptionStyle"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="5dp"
@@ -73,11 +74,13 @@
 
             <TextView
                 android:id="@+id/tvDetail"
+                style="@style/myTvTitleStyle"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:text="Detalle"
+                android:text="@string/str_detail"
                 android:textSize="16sp"
+                android:textColor="?attr/colorPrimary"
                 app:layout_constraintBottom_toBottomOf="@+id/btnAddFavorite"
                 app:layout_constraintEnd_toStartOf="@+id/btnAddFavorite"
                 app:layout_constraintHorizontal_bias="0.0"
@@ -97,12 +100,11 @@
 
             <TextView
                 android:id="@+id/tvDetailContent"
+                style="@style/myTvDescriptionStyle"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 tools:text="@string/str_place_detail_content"
                 android:layout_marginTop="10dp"
-                android:textSize="12sp"
-                android:textColor="?attr/myTextColor"
                 android:layout_marginBottom="20dp"
                 app:layout_constraintBottom_toTopOf="@+id/btnGoToMap"
                 app:layout_constraintEnd_toEndOf="@+id/tvDetail"
@@ -117,6 +119,8 @@
                 android:text="@string/str_see_map"
                 app:cornerRadius="15dp"
                 android:layout_margin="20dp"
+                android:fontFamily="@font/montserrat_bold"
+                android:backgroundTint="?attr/colorPrimary"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent" />
@@ -138,7 +142,7 @@
         android:layout_marginStart="10dp"
         android:layout_marginTop="5dp"
         app:rippleColor="@color/coffee"
-        android:backgroundTint="#1DFFFFFF"
+        android:backgroundTint="?attr/colorPrimary"
         app:icon="@drawable/ic_arrow_back_ios"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

@@ -49,6 +49,7 @@ class PlaceMapFragment : Fragment(), OnMapReadyCallback {
     private fun configMap(){
         val mapFragment: SupportMapFragment = childFragmentManager.findFragmentById(R.id.map) as SupportMapFragment
         mapFragment.getMapAsync(this)
+        binding.tvTitle.text = placeBundle?.name.orEmpty()
     }
 
     override fun onDestroyView() {
