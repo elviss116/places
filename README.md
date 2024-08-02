@@ -45,7 +45,8 @@ Al usar la api de Google Maps, se requiere añadir la KEY en el archico local.pr
     MAPS_API_KEY=AIzaSyC_x1tHr_FID5An4pY7e9B6aJau89raCig
     
 
-###Capturas
+## CAPTURAS
+
 ![Descripción de la imagen](https://i.ibb.co/mykTywK/screen1.png)
 
 ![Descripción de la imagen](https://i.ibb.co/pjwfdvX/screen2.png)
