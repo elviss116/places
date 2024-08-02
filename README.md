@@ -11,7 +11,7 @@ Como arquitectura se usa CleanArchitecture, el codigo fuente posee 3 modulos, 2 
 
 ### APP
 
-Este módulo posee todo lo relacionado a la capa de UI, los activitys, fragments, dialogs, Viewmodels, adapters, mappers(para transformar un objeto del modulo data a uno del modulo app).
+Este módulo posee todo lo relacionado a la capa de UI, los activity, fragments, dialogs, Viewmodels, adapters, mappers(para transformar un objeto del módulo data a uno del módulo app).
 
 ### DOMAIN
 
@@ -21,17 +21,21 @@ Este módulo posee la interface de los repositorios(sin implementación), los ca
 
 Este módulo posee todo lo relacionado a la capa de red(consumo de apis) , base de datos local(room), aqui se crean las implementaciones para consumir la api rest de películas, tambien se crean las implementación de los repository definidos en el modulo domain, los cuales seran usados en los UseCase de dicho modulo. Por ultimo también se creo un remote mediator quien hara el trabajo de gestionar la paginación entre la api rest, y room, para devolver un pagingData el cual sera utilizado en el modulo App.
 
+## ESTRUCTURA DEL PROYECTO
+
+El proyecto posee 3 modulos, (Data,Domain,App), cada modulo posee su propio archivo build.gradle con las dependencias necesarias para cada módulo, a su vez en cada build.gradle se configuró los permisos de acceso , siendo el módulo DOMAIN el único que no tendra acceso a ningún otro módulo.
+
 ## PATRON DE DISEÑO MVVM
 
 Como patrón de diseño se usa MVVM debido a su simplicidad y a que se adapta a los componentes de android como lo son los ViewModels, StateFlows.
 
-##### LOGICA DE LA UI
+## LOGICA DE LA UI
 
 En resumen cada fragment tiene un Sealed Interface el cual contiene los estados de cada pantalla, si dicho estado retorna algo sera un DataClass, si no retorna nada sera un dataObject.
 
-En todos los viewmodel se crea un StateFlow<UIState> que sera del tipo UISTATE creado para cada pantalla, por último cada fragment se subscribe al stateFlow y en base a cada estado ejecuta una determinada acción.
+En todos los viewmodel se crea un StateFlow<UIState> que será del tipo UISTATE creado para cada pantalla, por último cada fragment se subscribe al stateFlow y en base a cada estado ejecuta una determinada acción.
 
-##### FLAVORS
+## FLAVORS
 
 El proyecto tiene 2 FLAVORS (pinkStyle y normalStyle), cada flavor maneja un estilo diferente, tanto en los temas claros y nocturnos, tambien cada flavor asigna un icono, nombre de app y nombre para la BD interna en Room.
 
