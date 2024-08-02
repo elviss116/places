@@ -69,8 +69,8 @@ class PlaceDetailViewModel @Inject constructor(
                             photo = pd.photo.orEmpty(),
                             description = pd.description.orEmpty(),
                             address = pd.address.orEmpty(),
-                            lat = pd.lat.orEmpty(),
-                            lng = pd.lng.orEmpty()
+                            lat = pd.lat?:"0.0",
+                            lng = pd.lng?:"0.0"
                         )
                     )
                 }

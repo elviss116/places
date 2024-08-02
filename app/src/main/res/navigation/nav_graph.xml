@@ -18,7 +18,11 @@
         android:id="@+id/favoriteFragment"
         android:name="com.example.places.feature.ui.favorite.FavoriteFragment"
         android:label="fragment_favorite"
-        tools:layout="@layout/fragment_favorite" />
+        tools:layout="@layout/fragment_favorite" >
+        <action
+            android:id="@+id/action_favoriteFragment_to_placeDetailFragment"
+            app:destination="@id/placeDetailFragment" />
+    </fragment>
     <fragment
         android:id="@+id/placeDetailFragment"
         android:name="com.example.places.feature.ui.placeDetail.PlaceDetailFragment"
@@ -33,4 +37,9 @@
         android:name="com.example.places.feature.ui.placeMap.PlaceMapFragment"
         android:label="fragment_place_map"
         tools:layout="@layout/fragment_place_map" />
+    <fragment
+        android:id="@+id/favoritePlaceDetailFragment"
+        android:name="com.example.places.feature.ui.favoriteDetail.FavoritePlaceDetailFragment"
+        android:label="fragment_favorite_place_detail"
+        tools:layout="@layout/fragment_place_detail" />
 </navigation>

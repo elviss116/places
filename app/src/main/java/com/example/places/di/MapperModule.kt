@@ -1,5 +1,7 @@
 package com.example.places.di
 
+import com.example.places.mapper.placeDetail.PlaceDetailModelMapper
+import com.example.places.mapper.placeDetail.PlaceDetailModelMapperImpl
 import com.example.places.mapper.places.PlacesModelMapper
 import com.example.places.mapper.places.PlacesModelMapperImpl
 import dagger.Binds
@@ -17,4 +19,10 @@ abstract class MapperModule {
     abstract fun bindMapperPlace(
         mapperImpl: PlacesModelMapperImpl
     ) : PlacesModelMapper
+
+    @ViewModelScoped
+    @Binds
+    abstract fun bindMapperPlaceDetail(
+        mapperImpl: PlaceDetailModelMapperImpl
+    ) : PlaceDetailModelMapper
 }

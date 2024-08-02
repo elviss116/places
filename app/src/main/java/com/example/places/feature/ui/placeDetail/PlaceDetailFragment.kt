@@ -13,6 +13,8 @@ import com.example.places.R
 import com.example.places.databinding.FragmentPlaceDetailBinding
 import com.example.places.feature.base.BaseFragment
 import com.example.places.feature.ui.placeMap.PlaceMapFragment
+import com.example.places.feature.ui.placeMap.PlaceMapFragment.Companion.KEY_PLACE_DETAIL_BUNDLE
+import com.example.places.feature.utils.loadImageUrl
 import com.example.places.feature.utils.parcelable
 import com.example.places.feature.utils.themeColor
 import com.example.places.model.PlaceDetailModelView
@@ -24,6 +26,10 @@ import kotlinx.coroutines.launch
 class PlaceDetailFragment : BaseFragment<FragmentPlaceDetailBinding,PlaceDetailViewModel>(FragmentPlaceDetailBinding::inflate) {
 
     private val idPlaceBundle by lazy { arguments?.getString(KEY_ID_PLACE) }
+    private val placeBundle by lazy { arguments?.parcelable<PlaceDetailModelView>(
+        KEY_PLACE_DETAIL_BUNDLE
+    ) }
+
     private var placeDetail : PlaceDetailModelView? = null
 
     override val classTypeOfVM: Class<PlaceDetailViewModel>
@@ -35,12 +41,16 @@ class PlaceDetailFragment : BaseFragment<FragmentPlaceDetailBinding,PlaceDetailV
         idPlaceBundle?.let { id ->
             myViewModel.executeUseCasePlaceDetail(id)
         }
+        placeBundle?.let { pd ->
+            myViewModel.executeUseCaseVerifyFavoriteUseCase(pd.id)
+            setData(pd)
+        }
 
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED){
                 myViewModel.state.collectLatest { state ->
                     when(state){
-                        is UIPlaceDetailState.OnDetailIsLoaded -> setData(state)
+                        is UIPlaceDetailState.OnDetailIsLoaded -> setData(state.detail)
                         is UIPlaceDetailState.OnVerifyFavorite -> setIconFavorite(state.isFavorite)
                         is UIPlaceDetailState.OnAddOrDeleteFavorite -> showToast(state.msg)
                     }
@@ -55,7 +65,7 @@ class PlaceDetailFragment : BaseFragment<FragmentPlaceDetailBinding,PlaceDetailV
         with(binding){
             btnGoToMap.setOnClickListener {
                 val bundle = Bundle().apply {
-                    putParcelable(PlaceMapFragment.KEY_PLACE_DETAIL_BUNDLE,placeDetail)
+                    putParcelable(KEY_PLACE_DETAIL_BUNDLE,placeDetail)
                 }
                 findNavController().navigate(R.id.placeMapFragment,bundle)
             }
@@ -77,18 +87,15 @@ class PlaceDetailFragment : BaseFragment<FragmentPlaceDetailBinding,PlaceDetailV
         DrawableCompat.setTint(binding.btnAddFavorite.drawable, primaryColor)
     }
 
-    private fun setData(state: UIPlaceDetailState.OnDetailIsLoaded){
-        placeDetail = state.detail
-        myViewModel.executeUseCaseVerifyFavoriteUseCase(state.detail.id)
+    private fun setData(place: PlaceDetailModelView){
+        placeDetail = place
+        myViewModel.executeUseCaseVerifyFavoriteUseCase(place.id)
+
         with(binding){
-            Glide
-                .with(imgPlace.context)
-                .load(state.detail.photo)
-                .into(imgPlace)
-            //.error(R.drawable)
-            tvTitle.text = state.detail.name
-            tvDetailContent.text = state.detail.description
-            tvAddress.text = state.detail.address
+            imgPlace.loadImageUrl(place.photo)
+            tvTitle.text = place.name
+            tvDetailContent.text = place.description
+            tvAddress.text = place.address
         }
     }
 

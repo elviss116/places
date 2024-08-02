@@ -23,7 +23,7 @@
                 android:id="@+id/imgPlace"
                 android:layout_width="match_parent"
                 android:layout_height="400dp"
-                android:src="@drawable/place"
+                android:src="@drawable/placeholder"
                 android:scaleType="centerCrop"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
