@@ -33,7 +33,18 @@ class FavoriteFragment : BaseFragment<FragmentFavoriteBinding,PlaceFavoriteViewM
             viewLifecycleOwner.lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED){
                 myViewModel.state.collectLatest { state ->
                     when(state){
-                        is UIPlaceFavoriteState.OnPlaceFavoriteIsLoaded -> placeAdapter.addItems(state.list)
+                        is UIPlaceFavoriteState.OnPlaceFavoriteIsLoaded -> {
+                            with(binding){
+                                if (state.list.isEmpty()){
+                                    rvPlaces.visibility = View.GONE
+                                    lyEmpty.root.visibility = View.VISIBLE
+                                }else{
+                                    rvPlaces.visibility = View.VISIBLE
+                                    lyEmpty.root.visibility = View.GONE
+                                    placeAdapter.addItems(state.list)
+                                }
+                            }
+                        }
                     }
                 }
             }
