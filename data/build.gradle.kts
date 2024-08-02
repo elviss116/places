@@ -46,6 +46,21 @@ android {
         buildConfig = true
     }
 
+    flavorDimensions += "myPlaces"
+
+    productFlavors {
+        create("pinkStyle"){
+            dimension = "myPlaces"
+            buildConfigField("String", "ROOM_DB", "\"PLACES_PINK_DB\"")
+        }
+
+        create("normalStyle"){
+            dimension = "myPlaces"
+            buildConfigField("String", "ROOM_DB", "\"PLACES_NORMAL_DB\"")
+
+        }
+    }
+
 }
 
 dependencies {

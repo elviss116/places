@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+
+
+
+    <color name="colorWhite">#FFF</color>
+    <color name="border_constraint">#e9edf1</color>
+
+    <color name="c_primary">#C703AD</color>
+    <color name="c_primary_light">#E7F6F6</color>
+    <color name="c_secondary">#F9F9F9</color>
+    <color name="c_secondary_dark">#C3CDD2</color>
+    <color name="coffee">#2D2F31</color>
+    <color name="c_gray_light">#727272</color>
+    <color name="c_purple">#462E4D</color>
+    <color name="c_purple_light">#6376F5</color>
+    <color name="c_orange">#FF9F25</color>
+    <color name="c_pink">#D539DD</color>
+    <color name="colorGrey">#89807A</color>
+    <color name="c_bgCardFile">#F0EEF8</color>
+    <color name="c_purpleDark">#522EA8</color>
+    <color name="c_green">#5EB034</color>
+    <color name="c_orangeDark">#FD5F1A</color>
+    <color name="c_orangeLight">#F3B6AC</color>
+    <color name="c_red">#E91E63</color>
+    <color name="c_primary_dark">#C703AD</color>
+
+
+    <!-- COLORS LIGHT THEME -->
+    <color name="lt_white">#FFFFFFFF</color>
+    <color name="lt_white_light">#F9F9F9</color>
+
+    <!-- COLORS DARK THEME -->
+    <color name="dt_black">#121212</color>
+    <color name="dt_black_light">#2C2C2C</color>
+
+
+</resources>

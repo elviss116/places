@@ -10,7 +10,7 @@ plugins {
 android {
     signingConfigs {
         getByName("debug") {
-            storeFile = file("/Volumes/UGREEN/KEYS/place.pfx")
+            storeFile = file("place.pfx")
             storePassword = "123456"
             keyPassword = "123456"
             keyAlias = "ELVIS"
@@ -48,6 +48,23 @@ android {
 
     buildFeatures {
         viewBinding = true
+    }
+
+    flavorDimensions += "myPlaces"
+    productFlavors {
+
+        create("pinkStyle"){
+            dimension = "myPlaces"
+            applicationIdSuffix = ".pink"
+            versionNameSuffix = "-pink"
+        }
+
+        create("normalStyle"){
+            dimension = "myPlaces"
+            applicationIdSuffix = ".normal"
+            versionNameSuffix = "-normal"
+        }
+
     }
 }
 

@@ -2,6 +2,7 @@ package com.example.data.di
 
 import android.app.Application
 import androidx.room.Room
+import com.example.data.BuildConfig
 import com.example.data.room.MyDataBase
 import com.example.data.room.dao.DaoPlace
 import dagger.Module
@@ -17,7 +18,7 @@ object RoomModule {
     @Singleton
     @Provides
     fun providerDatabase(application: Application) : MyDataBase{
-        return Room.databaseBuilder(application,MyDataBase::class.java,"MyDB")
+        return Room.databaseBuilder(application,MyDataBase::class.java,BuildConfig.ROOM_DB)
             .build()
     }
 
