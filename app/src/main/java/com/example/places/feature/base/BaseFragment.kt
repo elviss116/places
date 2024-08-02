@@ -11,6 +11,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.viewbinding.ViewBinding
 import com.example.places.feature.dialog.LoadingDialog
+import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
@@ -69,7 +70,7 @@ abstract class BaseFragment<VB: ViewBinding, ViewModelType: BaseViewModel>(priva
                         requireActivity().supportFragmentManager,
                         LoadingDialog.TAG
                     )//childFragmentManager
-                    requireActivity().supportFragmentManager.executePendingTransactions()
+                // requireActivity().supportFragmentManager.executePendingTransactions()
                 } else {
 
                 }
@@ -77,7 +78,7 @@ abstract class BaseFragment<VB: ViewBinding, ViewModelType: BaseViewModel>(priva
 
         } else {
             myDialog?.dismiss()
-            requireActivity().supportFragmentManager.executePendingTransactions()
+            //requireActivity().supportFragmentManager.executePendingTransactions()
         }
     }
 

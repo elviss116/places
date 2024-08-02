@@ -8,6 +8,7 @@ import com.example.places.feature.base.BaseViewModel
 import com.example.places.mapper.places.PlacesModelMapper
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
@@ -28,14 +29,15 @@ class PlaceViewModel @Inject constructor(
     val state get() = _state.asStateFlow()
 
     private fun executeUseCaseGetPlace(){
+        showLoading(true)
         useCasePlace.invoke(viewModelScope,Any()){
             it.either(::handleUseCaseFailureFromBase,::handleSuccessUseCasePlace)
         }
     }
 
     private fun handleSuccessUseCasePlace(places: MainEntity<List<PlaceEntity>>){
-        println("#### PLACES :$places")
         viewModelScope.launch(Dispatchers.IO) {
+            showLoading(false)
             _state.update {
                 UIPlaceState.OnPlacesIsLoaded(
                     mapper.placesDomainToPresentation(places.data?: listOf())

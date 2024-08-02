@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".feature.ui.placeDetail.PlaceDetailFragment">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/imgPlace"
+                android:layout_width="match_parent"
+                android:layout_height="400dp"
+                android:src="@drawable/place"
+                android:scaleType="centerCrop"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <View
+                android:id="@+id/viewInf"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginTop="-30dp"
+                android:background="@drawable/bg_round_bottom_sheet"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imgPlace" />
+
+            <TextView
+                android:id="@+id/tvTitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/viewInf"
+                tools:text="Coliseo Romano" />
+
+            <ImageView
+                android:id="@+id/imgMarker"
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:src="@drawable/ic_marker_small"
+                app:layout_constraintBottom_toBottomOf="@+id/tvAddress"
+                app:layout_constraintStart_toStartOf="@+id/tvTitle"
+                app:layout_constraintTop_toTopOf="@+id/tvAddress" />
+
+            <TextView
+                android:id="@+id/tvAddress"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="10dp"
+                tools:text="Av. Paseo de la República 1550, Lima, Perú"
+                app:layout_constraintEnd_toEndOf="@+id/tvTitle"
+                app:layout_constraintStart_toEndOf="@+id/imgMarker"
+                app:layout_constraintTop_toBottomOf="@+id/tvTitle" />
+
+            <TextView
+                android:id="@+id/tvDetail"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="Detalle"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="@+id/btnAddFavorite"
+                app:layout_constraintEnd_toStartOf="@+id/btnAddFavorite"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/imgMarker"
+                app:layout_constraintTop_toBottomOf="@+id/tvAddress" />
+
+            <ImageButton
+                android:id="@+id/btnAddFavorite"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:src="@drawable/ic_favorite"
+                android:layout_marginTop="20dp"
+                app:layout_constraintEnd_toEndOf="@+id/tvAddress"
+                app:layout_constraintTop_toBottomOf="@+id/tvAddress"
+                app:tint="?attr/colorPrimary" />
+
+            <TextView
+                android:id="@+id/tvDetailContent"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                tools:text="@string/str_place_detail_content"
+                android:layout_marginTop="10dp"
+                android:textSize="12sp"
+                android:textColor="?attr/myTextColor"
+                android:layout_marginBottom="20dp"
+                app:layout_constraintBottom_toTopOf="@+id/btnGoToMap"
+                app:layout_constraintEnd_toEndOf="@+id/tvDetail"
+                app:layout_constraintStart_toStartOf="@+id/tvDetail"
+                app:layout_constraintTop_toBottomOf="@+id/tvDetail" />
+
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnGoToMap"
+                android:layout_width="0dp"
+                android:layout_height="60dp"
+                android:text="@string/str_see_map"
+                app:cornerRadius="15dp"
+                android:layout_margin="20dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnIconBack"
+        style="@style/Widget.MaterialComponents.Button.IconOnly"
+        app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.MyApp.Button.Circle"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:padding="0dp"
+        app:iconPadding="-5dp"
+        app:iconSize="15dp"
+        android:stateListAnimator="@null"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="5dp"
+        app:rippleColor="@color/coffee"
+        android:backgroundTint="#1DFFFFFF"
+        app:icon="@drawable/ic_arrow_back_ios"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

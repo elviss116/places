@@ -4,4 +4,11 @@
     <string name="str_place">Lugares</string>
 
     <string name="str_favorite">Favoritos</string>
+    <!-- TODO: Remove or change this placeholder text -->
+
+
+    <string name="str_place_detail_content">El Circuito Mágico del Agua del Parque de la Reserva, inaugurado el 26 de julio del 2007, es uno de los proyectos municipales de gran envergadura, ícono de la ciudad de Lima y símbolo de la recuperación de los espacios públicos de Lima. Cuenta con trece fuentes cibernéticas, apoyadas con la más alta tecnología donde la música, el agua, el sonido y luces láser se mezclan para presentarnos espectáculos únicos e increíbles.</string>
+    <string name="str_see_map">Ver mapa</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

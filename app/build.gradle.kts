@@ -4,9 +4,18 @@ plugins {
     alias(libs.plugins.hilt)
     id("kotlin-parcelize")
     id("com.google.devtools.ksp")
+    id("com.google.android.libraries.mapsplatform.secrets-gradle-plugin")
 }
 
 android {
+    signingConfigs {
+        getByName("debug") {
+            storeFile = file("/Volumes/UGREEN/KEYS/place.pfx")
+            storePassword = "123456"
+            keyPassword = "123456"
+            keyAlias = "ELVIS"
+        }
+    }
     namespace = "com.example.places"
     compileSdk = 34
 
@@ -63,6 +72,8 @@ dependencies {
     implementation(libs.glide)
     implementation(libs.glideCompiler)
     implementation(libs.lottie)
+    implementation("com.google.android.gms:play-services-maps:18.2.0")
+
     ksp(libs.hiltCompiler)
 
 }

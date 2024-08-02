@@ -8,15 +8,16 @@ import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 
 abstract class BaseViewModel : ViewModel() {
 
-    private val _baseState = MutableSharedFlow<UIBaseState>()
-    val baseState = _baseState.asSharedFlow()
+    private val _baseState = MutableStateFlow<UIBaseState>(UIBaseState.IDLE)
+    val baseState = _baseState.asStateFlow()
 
-    private val _newIsLoading = MutableSharedFlow<Boolean>()
-    val newIsLoading = _newIsLoading.asSharedFlow()
+    private val _newIsLoading = MutableStateFlow(false)
+    val newIsLoading = _newIsLoading.asStateFlow()
 
     private val _noInternet = MutableStateFlow(false)
     val noInternet = _noInternet.asStateFlow()
@@ -43,18 +44,17 @@ abstract class BaseViewModel : ViewModel() {
         showLoading(false)
     }
 
-    protected fun showLoading (status: Boolean){
-        viewModelScope.launch {
-            //_newIsLoading.emit(status)
-            _baseState.emit(UIBaseState.OnLoading(status))
+    protected fun showLoading(status: Boolean){
+        _baseState.update {
+            UIBaseState.OnLoading(status)
         }
-        onHandleTimeOut(false)
     }
 
     private fun onHandleTimeOut(show: Boolean){
-        viewModelScope.launch {
-            _baseState.emit(UIBaseState.OnTimeExpired(show))
+        _baseState.update {
+            UIBaseState.OnTimeExpired(show)
         }
+
     }
 
     private fun logError(errorMessage: String?) {

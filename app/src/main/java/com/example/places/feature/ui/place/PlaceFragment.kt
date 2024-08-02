@@ -1,18 +1,17 @@
 package com.example.places.feature.ui.place
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.places.R
 import com.example.places.databinding.FragmentPlaceBinding
 import com.example.places.feature.adapter.PlacesAdapter
 import com.example.places.feature.base.BaseFragment
+import com.example.places.feature.ui.placeDetail.PlaceDetailFragment
 import com.example.places.model.PlacesModelView
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
@@ -50,6 +49,9 @@ class PlaceFragment : BaseFragment<FragmentPlaceBinding,PlaceViewModel>(Fragment
     }
 
     private fun onClickPlace(place: PlacesModelView){
-
+        val bundle = Bundle().apply {
+            putString(PlaceDetailFragment.KEY_ID_PLACE,place.id)
+        }
+        findNavController().navigate(R.id.placeDetailFragment, bundle)
     }
 }
