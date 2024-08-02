@@ -31,15 +31,16 @@ En resumen cada fragment tiene un Sealed Interface el cual contiene los estados 
 
 En todos los viewmodel se crea un StateFlow<UIState> que sera del tipo UISTATE creado para cada pantalla, por último cada fragment se subscribe al stateFlow y en base a cada estado ejecuta una determinada acción.
 
+##### FLAVORS
+
+El proyecto tiene 2 FLAVORS (pinkStyle y normalStyle), cada flavor maneja un estilo diferente, tanto en los temas claros y nocturnos, tambien cada flavor asigna un icono, nombre de app y nombre para la BD interna en Room.
 
 
 ## PASOS PARA EJECUTAR EL PROYECTO
 
-Al usar la api de Google Maps, se requiere añadir la KEY en el archico loca.properties:
+Al usar la api de Google Maps, se requiere añadir la KEY en el archico local.properties:
 
-####Code Blocks (Indented style)
 
-Indented 4 spaces, like `<pre>` (Preformatted Text).
 
     MAPS_API_KEY=AIzaSyC_x1tHr_FID5An4pY7e9B6aJau89raCig
     
