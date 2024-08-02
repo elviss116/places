@@ -28,7 +28,6 @@ class PlaceDetailViewModel @Inject constructor(
     val state get() = _state.asStateFlow()
 
     fun executeUseCasePlaceDetail(id: String){
-        showLoading(true)
         useCaseDetailPlace.invoke(viewModelScope,id){
             it.either(::handleUseCaseFailureFromBase,::handleSuccessPlaceDetail)
         }
@@ -57,7 +56,6 @@ class PlaceDetailViewModel @Inject constructor(
     }
 
     private fun handleSuccessPlaceDetail(place: MainEntity<PlaceDetailEntity>){
-        showLoading(false)
         place.data?.let { pd ->
             viewModelScope.launch {
                 _state.update {

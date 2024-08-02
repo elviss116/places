@@ -14,4 +14,9 @@
     <string name="str_favorite_list_title">Explora tu\nlista de favoritos!</string>
     <string name="str_detail">Detalle</string>
     <string name="str_loading">Cargango..</string>
+    <string name="str_accept">Aceptar</string>
+    <string name="str_no_internet">Sin conexión a internet</string>
+    <string name="str_check_your_internet">Por favor, revisa tu conexión a internet, conectate a una red wifi o activa tus datos moviles</string>
+
+
 </resources>

@@ -29,8 +29,7 @@ abstract class BaseViewModel : ViewModel() {
             is Failure.NetworkConnectionLostSuddenly -> logError("Connection lost suddenly. Check the wifi or mobile data.")
             is Failure.NoNetworkDetected -> {
                 showLoading(false)
-                _noInternet.value = false
-                _noInternet.value = true
+                _noInternet.update { true }
             }
             is Failure.SSLError -> logError("WARNING: SSL Exception")
             is Failure.TimeOut -> {

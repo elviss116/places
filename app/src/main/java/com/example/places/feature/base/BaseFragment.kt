@@ -12,6 +12,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.viewbinding.ViewBinding
 import com.example.places.feature.dialog.LoadingDialog
+import com.example.places.feature.dialog.noInternet.NoInternetDialog
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
@@ -22,6 +23,7 @@ abstract class BaseFragment<VB: ViewBinding, ViewModelType: BaseViewModel>(priva
     private var _binding: VB? = null
     protected val binding get() = _binding!!
     private var myDialog: LoadingDialog? = null
+    private var myDialogInternet: NoInternetDialog? = null
 
     abstract val classTypeOfVM: Class<ViewModelType>
     lateinit var myViewModel: ViewModelType
@@ -47,16 +49,37 @@ abstract class BaseFragment<VB: ViewBinding, ViewModelType: BaseViewModel>(priva
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         myDialog = LoadingDialog()
+        myDialogInternet = NoInternetDialog()
         observerBaseState()
     }
 
     private fun observerBaseState(){
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED){
-                myViewModel.baseState.collectLatest { state ->
-                    when(state){
-                        is UIBaseState.OnLoading -> showLoading(state.show)
-                        is UIBaseState.OnTimeExpired -> Unit//showTimeExpiredDialog(state.show)
+                launch {
+                    myViewModel.baseState.collectLatest { state ->
+                        when(state){
+                            is UIBaseState.OnLoading -> showLoading(state.show)
+                            is UIBaseState.OnTimeExpired -> Unit//showTimeExpiredDialog(state.show)
+                        }
+                    }
+                }
+
+                launch {
+                    myViewModel.noInternet.collectLatest { status ->
+                        if (status){
+                            myDialogInternet?.let { dialog ->
+                                if (!dialog.isAdded){
+                                    dialog.show(childFragmentManager,NoInternetDialog.TAG)
+                                }
+                            }
+                        }else{
+                            myDialogInternet?.let {
+                                if (it.isAdded){
+                                    it.dismiss()
+                                }
+                            }
+                        }
                     }
                 }
             }
@@ -76,12 +99,16 @@ abstract class BaseFragment<VB: ViewBinding, ViewModelType: BaseViewModel>(priva
             }
 
         } else {
-            myDialog?.let {
-                if (it.isAdded){
-                    it.dismiss()
-                }
-            }
+            hideLoadingDialog()
             //requireActivity().supportFragmentManager.executePendingTransactions()
+        }
+    }
+
+    private fun hideLoadingDialog(){
+        myDialog?.let {
+            if (it.isAdded){
+                it.dismiss()
+            }
         }
     }
 
