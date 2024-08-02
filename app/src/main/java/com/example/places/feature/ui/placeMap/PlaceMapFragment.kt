@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
+import androidx.navigation.fragment.findNavController
 import com.example.places.R
 import com.example.places.databinding.FragmentPlaceMapBinding
 import com.example.places.feature.adapter.InfoWindowMapAdapter
@@ -44,6 +45,13 @@ class PlaceMapFragment : Fragment(), OnMapReadyCallback {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         configMap()
+        configView()
+    }
+
+    private fun configView(){
+        binding.btnIconBack.setOnClickListener {
+            findNavController().popBackStack()
+        }
     }
 
     private fun configMap(){

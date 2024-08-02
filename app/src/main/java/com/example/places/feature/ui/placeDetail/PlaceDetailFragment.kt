@@ -67,12 +67,15 @@ class PlaceDetailFragment : BaseFragment<FragmentPlaceDetailBinding,PlaceDetailV
                 val bundle = Bundle().apply {
                     putParcelable(KEY_PLACE_DETAIL_BUNDLE,placeDetail)
                 }
-                findNavController().navigate(R.id.placeMapFragment,bundle)
+                findNavController().navigate(R.id.action_placeDetailFragment_to_placeMapFragment,bundle)
             }
             btnAddFavorite.setOnClickListener {
                 placeDetail?.let { pd ->
                     myViewModel.executeUseCaseAddFavorite(pd)
                 }
+            }
+            btnIconBack.setOnClickListener {
+                findNavController().popBackStack()
             }
         }
     }

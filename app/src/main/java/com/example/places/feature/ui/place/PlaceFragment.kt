@@ -52,6 +52,6 @@ class PlaceFragment : BaseFragment<FragmentPlaceBinding,PlaceViewModel>(Fragment
         val bundle = Bundle().apply {
             putString(PlaceDetailFragment.KEY_ID_PLACE,place.id)
         }
-        findNavController().navigate(R.id.placeDetailFragment, bundle)
+        findNavController().navigate(R.id.action_placeFragment_to_placeDetailFragment, bundle)
     }
 }

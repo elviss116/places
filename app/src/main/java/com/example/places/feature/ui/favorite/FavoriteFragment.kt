@@ -53,6 +53,6 @@ class FavoriteFragment : BaseFragment<FragmentFavoriteBinding,PlaceFavoriteViewM
         val bundle = Bundle().apply {
             putParcelable(KEY_PLACE_DETAIL_BUNDLE,pd)
         }
-        findNavController().navigate(R.id.placeDetailFragment,bundle)
+        findNavController().navigate(R.id.action_favoriteFragment_to_placeDetailFragment,bundle)
     }
 }
