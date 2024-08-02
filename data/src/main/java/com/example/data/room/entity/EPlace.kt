@@ -3,6 +3,7 @@ package com.example.data.room.entity
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import com.example.domain.entity.placeDetail.PlaceDetailEntity
 
 @Entity(tableName = "place")
 data class EPlace(
@@ -23,4 +24,17 @@ data class EPlace(
     val lat: String,
     @ColumnInfo(name = "lng")
     val lng: String,
-)
+) {
+    fun toDomain() : PlaceDetailEntity {
+        return PlaceDetailEntity(
+            id = id,
+            idPlace = idPlace,
+            name = name,
+            photo = photo,
+            description = description,
+            address = address,
+            lat = lat,
+            lng = lng
+        )
+    }
+}

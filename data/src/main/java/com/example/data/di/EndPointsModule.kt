@@ -1,7 +1,10 @@
 package com.example.data.di
 
 import com.example.data.network.source.IPlaceDetailEndPoint
+import com.example.data.network.source.IPlaceFavoriteEndPoint
+import com.example.data.network.source.IPlaceRoomEndPoint
 import com.example.data.network.source.IPlacesEndPoint
+import com.example.data.network.source.IVerifyFavoriteEndPoint
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -20,4 +23,19 @@ abstract class EndPointsModule {
     abstract fun bindEndPointPlaceDetail(
         endPoint: IPlaceDetailEndPoint.IPlaceDetailEndPointImpl
     ) : IPlaceDetailEndPoint
+
+    @Binds
+    abstract fun bindEndPointPlaceFavorite(
+        endPoint: IPlaceFavoriteEndPoint.IPlaceFavoriteEndPointImpl
+    ) : IPlaceFavoriteEndPoint
+
+    @Binds
+    abstract fun bindEndPointPlaceRoom(
+        endPoint: IPlaceRoomEndPoint.IPlaceRoomEndPointImpl
+    ) : IPlaceRoomEndPoint
+
+    @Binds
+    abstract fun bindEndPointPlaceVerify(
+        endPoint: IVerifyFavoriteEndPoint.IVerifyFavoriteEndPointImpl
+    ) : IVerifyFavoriteEndPoint
 }

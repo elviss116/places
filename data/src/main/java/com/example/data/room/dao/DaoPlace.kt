@@ -11,14 +11,14 @@ import kotlinx.coroutines.flow.Flow
 interface DaoPlace {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertMovie(place: EPlace): Long
+    suspend fun insertPlace(place: EPlace): Long
 
     @Query("delete from place where id=:id")
-    suspend fun deletePlaceId(id: Long)
+    suspend fun deletePlaceId(id: String)
 
     @Query("select * from place")
-    fun getAllMovie() : Flow<List<EPlace>>
+    fun getAllPlace() : Flow<List<EPlace>>
 
     @Query("select count(*) from place where id=:id")
-    fun getPlaceById(id: Long) : Flow<Int>
+    suspend fun getPlaceById(id: String) : Int
 }

@@ -22,5 +22,5 @@ object RoomModule {
     }
 
     @Provides
-    fun providerMovieDao(db: MyDataBase) : DaoPlace = db.daoPlace
+    fun providerPlaceDao(db: MyDataBase) : DaoPlace = db.daoPlace
 }
